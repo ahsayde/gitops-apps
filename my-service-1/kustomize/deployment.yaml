@@ -19,4 +19,4 @@ spec:
         image: ubuntu:latest
         command: ["sleep", "100d"]
         securityContext:
-          privileged: true
+          privileged: false

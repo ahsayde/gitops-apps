@@ -1,22 +1,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: my-service-1
+  name: deployment-1
+  namespace: policy-system
   labels:
-    app: my-service-1
+    kustomize.toolkit.fluxcd.io/name: app-a
+    kustomize.toolkit.fluxcd.io/namespace: flux-system
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: my-service-1
+      app: deployment-1
   template:
     metadata:
       labels:
-        app: my-service-1
+        app: deployment-1
     spec:
       containers:
       - name: ubuntu
         image: ubuntu:latest
         command: ["sleep", "100d"]
         securityContext:
-          privileged: true
+          privileged: false
