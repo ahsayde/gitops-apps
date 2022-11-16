@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-b-deployment-1
+  namespace: namespace-b
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: app-b-deployment-1
+  template:
+    metadata:
+      labels:
+        app: app-b-deployment-1
+    spec:
+      containers:
+      - name: ubuntu
+        image: ubuntu:latest
+        command: ["sleep", "100d"]
+--- 
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-b-deployment-2
+  namespace: namespace-b
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: app-b-deployment-2
+  template:
+    metadata:
+      labels:
+        app: app-b-deployment-2
+    spec:
+      containers:
+      - name: ubuntu
+        image: ubuntu:latest
+        command: ["sleep", "100d"]
